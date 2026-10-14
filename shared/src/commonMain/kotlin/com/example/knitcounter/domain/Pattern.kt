@@ -1,7 +1,5 @@
 package com.example.knitcounter.domain
 
-import kotlin.time.Instant
-
 enum class GaugeType(val width: Length,
                      val height: Length)
 {
@@ -9,17 +7,35 @@ enum class GaugeType(val width: Length,
     FOUR_INCHES(Length.inches(4), Length.inches(4)),
 }
 
-class Gauge (
+@JvmInline
+value class FolderId(val id: Long) {
+    companion object {
+        val ROOT = FolderId(0)
+    }
+}
+
+data class Folder (
+    val id: FolderId,
+    var name: String,
+    var count: Int,
+    val ownerId: UserId,
+    var parentFolder: FolderId
+)
+
+data class Gauge (
     val numStitches: Int,
     val numRows: Int,
     val type: GaugeType
 )
 
-class Pattern (
+data class Pattern (
     val id: Long = 0,
-    val title: String,
+    val ownerId: UserId,
+    var name: String,
     val gauge: Map<GaugeType, Gauge>,
     val file: String,
-    val createdAt: Instant,
-    val updatedAt: Instant
+    val progression: Int,
+    val icon: String,
+    var parentFolder: FolderId = FolderId.ROOT,
+    val tags: List<String> = listOf()
 )

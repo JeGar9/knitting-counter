@@ -50,6 +50,7 @@ kotlin {
             implementation(libs.androidx.room.runtime)
             implementation(libs.androidx.sqlite.bundled)
             implementation(libs.androidx.material.icons)
+            implementation(libs.androidx.material.icons.extended)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

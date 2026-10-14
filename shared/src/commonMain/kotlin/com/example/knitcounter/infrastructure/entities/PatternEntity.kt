@@ -6,6 +6,8 @@ import androidx.room3.ForeignKey
 import androidx.room3.PrimaryKey
 import androidx.room3.Relation
 import com.example.knitcounter.domain.Gauge
+import com.example.knitcounter.domain.UserId
+import java.util.UUID
 
 
 @Entity(
@@ -30,6 +32,7 @@ data class GaugeEntity(
 data class PatternEntity (
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
+    val ownerId: UUID,
     val title: String
 )
 
