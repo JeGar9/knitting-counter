@@ -58,11 +58,13 @@ kotlin {
     }
 }
 
+
 dependencies {
     androidRuntimeClasspath(libs.compose.uiTooling)
     add("kspAndroid", libs.androidx.room.compiler)
     add("kspJvm", libs.androidx.room.compiler)
 }
+
 
 room3 {
     schemaDirectory("$projectDir/schemas")
